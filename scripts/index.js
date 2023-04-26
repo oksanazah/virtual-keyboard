@@ -106,6 +106,23 @@ keyboard.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  console.log(event.code);
-  textarea.value += event.code;
+  const key = document.querySelector(`.${event.code}`);
+  if (
+    key
+    && event.code !== 'Backspace'
+    && event.code !== 'Delete'
+    && event.code !== 'Enter'
+    && event.code !== 'ShiftLeft'
+    && event.code !== 'ShiftRight'
+    && event.code !== 'ControlLeft'
+    && event.code !== 'ControlRight'
+    && event.code !== 'AltLeft'
+    && event.code !== 'AltRight'
+    && event.code !== 'CapsLock'
+    && event.code !== 'MetaLeft'
+    && event.code !== 'Tab'
+  ) {
+    console.log(key.textContent);
+    textarea.value += key.textContent;
+  }
 });
