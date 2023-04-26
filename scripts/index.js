@@ -90,16 +90,18 @@ keyboard.addEventListener('click', (event) => {
   if (
     event.target.tagName === 'DIV'
     && event.target.className.includes('key ')
-    && !event.target.className.includes('backspace')
-    && !event.target.className.includes('delete')
-    && !event.target.className.includes('enter')
-    && !event.target.className.includes('shift-left')
-    && !event.target.className.includes('shift-right')
-    && !event.target.className.includes('control')
-    && !event.target.className.includes('alt')
-    && !event.target.className.includes('capslock')
-    && !event.target.className.includes('win')
-    && !event.target.className.includes('tab')
+    && !event.target.className.includes('Backspace')
+    && !event.target.className.includes('Delete')
+    && !event.target.className.includes('Enter')
+    && !event.target.className.includes('ShiftLeft')
+    && !event.target.className.includes('ShiftRight')
+    && !event.target.className.includes('ControlLeft')
+    && !event.target.className.includes('ControlRight')
+    && !event.target.className.includes('AltLeft')
+    && !event.target.className.includes('AltRight')
+    && !event.target.className.includes('CapsLock')
+    && !event.target.className.includes('MetaLeft')
+    && !event.target.className.includes('Tab')
   ) {
     textarea.value += event.target.textContent;
   }
@@ -107,6 +109,8 @@ keyboard.addEventListener('click', (event) => {
 
 document.addEventListener('keydown', (event) => {
   const key = document.querySelector(`.${event.code}`);
+  key.classList.add('key-active');
+
   if (
     key
     && event.code !== 'Backspace'
@@ -122,7 +126,11 @@ document.addEventListener('keydown', (event) => {
     && event.code !== 'MetaLeft'
     && event.code !== 'Tab'
   ) {
-    console.log(key.textContent);
     textarea.value += key.textContent;
   }
+});
+
+document.addEventListener('keyup', (event) => {
+  const key = document.querySelector(`.${event.code}`);
+  key.classList.remove('key-active');
 });

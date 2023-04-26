@@ -40,11 +40,6 @@
   background: #5f70b9;
 }
 
-.key:active {
-  background: #496bff;
-  border-radius: 40px;
-}
-
 .Backspace,
 .Tab,
 .Delete,
@@ -63,6 +58,12 @@
 .ArrowRight {
   background: #242424;
   font-weight: 600;
+}
+
+.key:active,
+.key-active {
+  background: #496bff;
+  border-radius: 40px;
 }
 
 .Backspace,
