@@ -82,3 +82,25 @@ body.innerHTML = `
       </div>
     </div>
 `;
+
+const keyboard = document.querySelector('.keyboard');
+const id = document.getElementById('textarea');
+
+keyboard.addEventListener('click', (event) => {
+  if (
+    event.target.tagName === 'DIV'
+    && event.target.className.includes('key ')
+    && !event.target.className.includes('backspace')
+    && !event.target.className.includes('delete')
+    && !event.target.className.includes('enter')
+    && !event.target.className.includes('shift-left')
+    && !event.target.className.includes('shift-right')
+    && !event.target.className.includes('control')
+    && !event.target.className.includes('alt')
+    && !event.target.className.includes('capslock')
+    && !event.target.className.includes('win')
+    && !event.target.className.includes('tab')
+  ) {
+    id.value += event.target.textContent;
+  }
+});
