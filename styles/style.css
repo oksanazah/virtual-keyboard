@@ -24,11 +24,54 @@
 }
 
 .key {
+  cursor: pointer;
   display: inline-block;
   width: 40px;
   height: 40px;
   line-height: 40px;
   color: #fff;
   background-color: #424242;
-  border-radius: 2px;
+  border-radius: 4px;
+  margin-left: 1px;
+}
+
+.backspace,
+.tab,
+.delete,
+.capslock,
+.enter,
+.shift-left,
+.shift-right,
+.arrow-up,
+.control,
+.win,
+.alt,
+.arrow-left,
+.arrow-down,
+.arrow-right {
+  background: #242424;
+  font-weight: 600;
+}
+
+.backspace,
+.capslock,
+.shift-left {
+  width: 100px;
+}
+
+.delete {
+  width: 44px;
+}
+
+.tab {
+  width: 50px;
+}
+
+.enter,
+.shift-right {
+  width: 86px;
+}
+
+.space {
+  width: 330px;
 }
