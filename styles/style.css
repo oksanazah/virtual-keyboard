@@ -45,43 +45,45 @@
   border-radius: 40px;
 }
 
-.backspace,
-.tab,
-.delete,
-.capslock,
-.enter,
-.shift-left,
-.shift-right,
-.arrow-up,
-.control,
-.win,
-.alt,
-.arrow-left,
-.arrow-down,
-.arrow-right {
+.Backspace,
+.Tab,
+.Delete,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight,
+.ArrowUp,
+.ControlLeft,
+.ControlRight,
+.MetaLeft,
+.AltLeft,
+.AltRight,
+.ArrowLeft,
+.ArrowDown,
+.ArrowRight {
   background: #242424;
   font-weight: 600;
 }
 
-.backspace,
-.capslock,
-.shift-left {
+.Backspace,
+.CapsLock,
+.ShiftLeft {
   width: 100px;
 }
 
-.delete {
+.Delete {
   width: 44px;
 }
 
-.tab {
+.Tab {
   width: 50px;
 }
 
-.enter,
-.shift-right {
+.Enter,
+.ShiftRight {
   width: 86px;
 }
 
-.space {
+.Space {
   width: 330px;
 }
