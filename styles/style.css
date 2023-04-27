@@ -7,6 +7,7 @@
   width: 680px;
   height: 160px;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .keyboard {
@@ -87,4 +88,8 @@
 
 .Space {
   width: 330px;
+}
+
+.hide {
+  display: none;
 }
