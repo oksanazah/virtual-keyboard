@@ -1,44 +1,6 @@
 const body = document.getElementById('body');
 const initLang = localStorage.getItem('lang');
 
-if (!initLang) {
-  localStorage.setItem('lang', 'en');
-}
-
-const switchLang = () => {
-  const lang = localStorage.getItem('lang');
-  const enKeys = document.querySelectorAll('.en');
-  const ruKeys = document.querySelectorAll('.ru');
-
-  if (lang === 'ru') {
-    localStorage.setItem('lang', 'en');
-
-    enKeys.forEach((el) => {
-      el.classList.remove('hide');
-    });
-
-    ruKeys.forEach((el) => {
-      el.classList.add('hide');
-    });
-  } else {
-    localStorage.setItem('lang', 'ru');
-
-    enKeys.forEach((el) => {
-      el.classList.add('hide');
-    });
-
-    ruKeys.forEach((el) => {
-      el.classList.remove('hide');
-    });
-  }
-};
-
-document.addEventListener('keydown', (event) => {
-  if (event.ctrlKey && event.altKey) {
-    switchLang();
-  }
-});
-
 body.innerHTML = `
     <div class="container">
       <h1>RSS Virtual Keyboard</h1>
@@ -187,6 +149,58 @@ body.innerHTML = `
       <p>To switch the language combination: left ctrl + alt</p>
     </div>
 `;
+
+if (!initLang || initLang === 'en') {
+  localStorage.setItem('lang', 'en');
+
+  document.querySelectorAll('.en').forEach((el) => {
+    el.classList.remove('hide');
+  });
+  document.querySelectorAll('.ru').forEach((el) => {
+    el.classList.add('hide');
+  });
+} if (initLang === 'ru') {
+  document.querySelectorAll('.en').forEach((el) => {
+    el.classList.add('hide');
+  });
+  document.querySelectorAll('.ru').forEach((el) => {
+    el.classList.remove('hide');
+  });
+}
+
+const switchLang = () => {
+  const lang = localStorage.getItem('lang');
+  const enKeys = document.querySelectorAll('.en');
+  const ruKeys = document.querySelectorAll('.ru');
+
+  if (lang === 'ru') {
+    localStorage.setItem('lang', 'en');
+
+    enKeys.forEach((el) => {
+      el.classList.remove('hide');
+    });
+
+    ruKeys.forEach((el) => {
+      el.classList.add('hide');
+    });
+  } else {
+    localStorage.setItem('lang', 'ru');
+
+    enKeys.forEach((el) => {
+      el.classList.add('hide');
+    });
+
+    ruKeys.forEach((el) => {
+      el.classList.remove('hide');
+    });
+  }
+};
+
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.altKey) {
+    switchLang();
+  }
+});
 
 const keyboard = document.querySelector('.keyboard');
 const textarea = document.getElementById('textarea');
