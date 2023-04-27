@@ -1,20 +1,35 @@
 const body = document.getElementById('body');
+const initLang = localStorage.getItem('lang');
+
+if (!initLang) {
+  localStorage.setItem('lang', 'en');
+}
 
 const switchLang = () => {
-  const key = localStorage.getItem('lang');
-  const enKeys = document.querySelector('.en');
-  const ruKeys = document.querySelector('.ru');
+  const lang = localStorage.getItem('lang');
+  const enKeys = document.querySelectorAll('.en');
+  const ruKeys = document.querySelectorAll('.ru');
 
-  if (key === 'ru') {
+  if (lang === 'ru') {
     localStorage.setItem('lang', 'en');
 
-    enKeys.classList.remove('hide');
-    ruKeys.classList.add('hide');
+    enKeys.forEach((el) => {
+      el.classList.remove('hide');
+    });
+
+    ruKeys.forEach((el) => {
+      el.classList.add('hide');
+    });
   } else {
     localStorage.setItem('lang', 'ru');
 
-    enKeys.classList.add('hide');
-    ruKeys.classList.remove('hide');
+    enKeys.forEach((el) => {
+      el.classList.add('hide');
+    });
+
+    ruKeys.forEach((el) => {
+      el.classList.remove('hide');
+    });
   }
 };
 
@@ -32,22 +47,36 @@ body.innerHTML = `
         <div class="row">
           <div class="key en Backquote">\`</div>
           <div class="key ru Backquote hide">ё</div>
-          <div class="key Digit1">1</div>
-          <div class="key Digit2">2</div>
-          <div class="key Digit3">3</div>
-          <div class="key Digit4">4</div>
-          <div class="key Digit5">5</div>
-          <div class="key Digit6">6</div>
-          <div class="key Digit7">7</div>
-          <div class="key Digit8">8</div>
-          <div class="key Digit9">9</div>
-          <div class="key Digit0">0</div>
-          <div class="key Minus">-</div>
-          <div class="key Equal">=</div>
-          <div class="key Backspace">Backspace</div>
+          <div class="key en Digit1">1</div>
+          <div class="key ru Digit1 hide">1</div>
+          <div class="key en Digit2">2</div>
+          <div class="key ru Digit2 hide">2</div>
+          <div class="key en Digit3">3</div>
+          <div class="key ru Digit3 hide">3</div>
+          <div class="key en Digit4">4</div>
+          <div class="key ru Digit4 hide">4</div>
+          <div class="key en Digit5">5</div>
+          <div class="key ru Digit5 hide">5</div>
+          <div class="key en Digit6">6</div>
+          <div class="key ru Digit6 hide">6</div>
+          <div class="key en Digit7">7</div>
+          <div class="key ru Digit7 hide">7</div>
+          <div class="key en Digit8">8</div>
+          <div class="key ru Digit8 hide">8</div>
+          <div class="key en Digit9">9</div>
+          <div class="key ru Digit9 hide">9</div>
+          <div class="key en Digit0">0</div>
+          <div class="key ru Digit0 hide">0</div>
+          <div class="key en Minus">-</div>
+          <div class="key ru Minus hide">-</div>
+          <div class="key en Equal">=</div>
+          <div class="key ru Equal hide">=</div>
+          <div class="key en Backspace">Backspace</div>
+          <div class="key ru Backspace hide">Backspace</div>
         </div>
         <div class="row">
-          <div class="key Tab">Tab</div>
+          <div class="key en Tab">Tab</div>
+          <div class="key ru Tab hide">Tab</div>
           <div class="key en KeyQ">q</div>
           <div class="key ru KeyQ hide">й</div>
           <div class="key en KeyW">w</div>
@@ -72,11 +101,14 @@ body.innerHTML = `
           <div class="key ru BracketLeft hide">х</div>
           <div class="key en BracketRight">]</div>
           <div class="key ru BracketRight hide">ъ</div>
-          <div class="key Backslash">\\</div>
-          <div class="key Delete">Del</div>
+          <div class="key en Backslash">\\</div>
+          <div class="key ru Backslash hide">\\</div>
+          <div class="key en Delete">Del</div>
+          <div class="key ru Delete hide">Del</div>
         </div>
         <div class="row">
-          <div class="key CapsLock">CapsLock</div>
+          <div class="key en CapsLock">CapsLock</div>
+          <div class="key ru CapsLock hide">CapsLock</div>
           <div class="key en KeyA">a</div>
           <div class="key ru KeyA hide">ф</div>
           <div class="key en KeyS">s</div>
@@ -99,10 +131,12 @@ body.innerHTML = `
           <div class="key ru Semicolon hide">ж</div>
           <div class="key en Quote">'</div>
           <div class="key ru Quote hide">э</div>
-          <div class="key Enter">Enter</div>
+          <div class="key en Enter">Enter</div>
+          <div class="key ru Enter hide">Enter</div>
         </div>
         <div class="row">
-          <div class="key ShiftLeft">Shift</div>
+          <div class="key en ShiftLeft">Shift</div>
+          <div class="key ru ShiftLeft hide">Shift</div>
           <div class="key en KeyZ">z</div>
           <div class="key ru KeyZ hide">я</div>
           <div class="key en KeyX">x</div>
@@ -123,19 +157,30 @@ body.innerHTML = `
           <div class="key ru Period hide">ю</div>
           <div class="key en Slash">/</div>
           <div class="key ru Slash hide">.</div>
-          <div class="key ArrowUp">↑</div>
-          <div class="key ShiftRight">Shift</div>
+          <div class="key en ArrowUp">↑</div>
+          <div class="key ru ArrowUp hide">↑</div>
+          <div class="key en ShiftRight">Shift</div>
+          <div class="key ru ShiftRight hide">Shift</div>
         </div>
         <div class="row">
-          <div class="key ControlLeft">Ctrl</div>
-          <div class="key MetaLeft">Win</div>
-          <div class="key AltLeft">Alt</div>
-          <div class="key Space">&nbsp</div>
-          <div class="key AltRight">Alt</div>
-          <div class="key ArrowLeft">←</div>
-          <div class="key ArrowDown">↓</div>
-          <div class="key ArrowRight">→</div>
-          <div class="key ControlRight">Ctrl</div>
+          <div class="key en ControlLeft">Ctrl</div>
+          <div class="key ru ControlLeft hide">Ctrl</div>
+          <div class="key en MetaLeft">Win</div>
+          <div class="key ru MetaLeft hide">Win</div>
+          <div class="key en AltLeft">Alt</div>
+          <div class="key ru AltLeft hide">Alt</div>
+          <div class="key en Space">&nbsp</div>
+          <div class="key ru Space hide">&nbsp</div>
+          <div class="key en AltRight">Alt</div>
+          <div class="key ru AltRight hide">Alt</div>
+          <div class="key en ArrowLeft">←</div>
+          <div class="key ru ArrowLeft hide">←</div>
+          <div class="key en ArrowDown">↓</div>
+          <div class="key ru ArrowDown hide">↓</div>
+          <div class="key en ArrowRight">→</div>
+          <div class="key ru ArrowRight hide">→</div>
+          <div class="key en ControlRight">Ctrl</div>
+          <div class="key ru ControlRight hide">Ctrl</div>
         </div>
       </div>
       <p>The keyboard was created in the Windows operating system</p>
@@ -168,7 +213,10 @@ keyboard.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  const key = document.querySelector(`.${event.code}`);
+  const lang = localStorage.getItem('lang');
+  const key = document.getElementsByClassName(`${lang} ${event.code}`)[0];
+
+  console.log(key);
 
   if (key) {
     key.classList.add('key-active');
@@ -194,7 +242,8 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-  const key = document.querySelector(`.${event.code}`);
+  const lang = localStorage.getItem('lang');
+  const key = document.getElementsByClassName(`${lang} ${event.code}`)[0];
 
   if (key) {
     key.classList.remove('key-active');
