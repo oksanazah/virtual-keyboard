@@ -43,7 +43,6 @@
 
 .Backspace,
 .Tab,
-.Delete,
 .CapsLock,
 .Enter,
 .ShiftLeft,
@@ -69,16 +68,9 @@
 
 .Backspace,
 .CapsLock,
-.ShiftLeft {
-  width: 100px;
-}
-
-.Delete {
-  width: 44px;
-}
-
+.ShiftLeft,
 .Tab {
-  width: 50px;
+  width: 100px;
 }
 
 .Enter,

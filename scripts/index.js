@@ -65,8 +65,6 @@ body.innerHTML = `
           <div class="key ru BracketRight hide">ъ</div>
           <div class="key en Backslash">\\</div>
           <div class="key ru Backslash hide">\\</div>
-          <div class="key en Delete">Del</div>
-          <div class="key ru Delete hide">Del</div>
         </div>
         <div class="row">
           <div class="key en CapsLock">CapsLock</div>
@@ -210,7 +208,6 @@ keyboard.addEventListener('click', (event) => {
     event.target.tagName === 'DIV'
     && event.target.className.includes('key ')
     && !event.target.className.includes('Backspace')
-    && !event.target.className.includes('Delete')
     && !event.target.className.includes('Enter')
     && !event.target.className.includes('ShiftLeft')
     && !event.target.className.includes('ShiftRight')
@@ -230,8 +227,6 @@ document.addEventListener('keydown', (event) => {
   const lang = localStorage.getItem('lang');
   const key = document.getElementsByClassName(`${lang} ${event.code}`)[0];
 
-  console.log(key);
-
   if (key) {
     key.classList.add('key-active');
   }
@@ -239,7 +234,6 @@ document.addEventListener('keydown', (event) => {
   if (
     key
     && event.code !== 'Backspace'
-    && event.code !== 'Delete'
     && event.code !== 'Enter'
     && event.code !== 'ShiftLeft'
     && event.code !== 'ShiftRight'
