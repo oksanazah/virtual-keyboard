@@ -269,7 +269,7 @@ document.addEventListener('keydown', (event) => {
   }
 
   if (
-    key
+    key && !event.shiftKey
     && event.code !== 'Backspace'
     && event.code !== 'Enter'
     && event.code !== 'ShiftLeft'
@@ -286,7 +286,7 @@ document.addEventListener('keydown', (event) => {
   ) {
     textarea.value += key.textContent;
   } if (
-    key
+    key && !event.shiftKey
     && event.code !== 'Backspace'
     && event.code !== 'Enter'
     && event.code !== 'ShiftLeft'
@@ -300,6 +300,40 @@ document.addEventListener('keydown', (event) => {
     && event.code !== 'Tab'
     && (caps[0].className.includes('key-active')
     || caps[1].className.includes('key-active'))
+  ) {
+    textarea.value += key.textContent.toUpperCase();
+  } if (
+    key && event.shiftKey
+    && event.code !== 'Backspace'
+    && event.code !== 'Enter'
+    && event.code !== 'ShiftLeft'
+    && event.code !== 'ShiftRight'
+    && event.code !== 'ControlLeft'
+    && event.code !== 'ControlRight'
+    && event.code !== 'AltLeft'
+    && event.code !== 'AltRight'
+    && event.code !== 'CapsLock'
+    && event.code !== 'MetaLeft'
+    && event.code !== 'Tab'
+    && (caps[0].className.includes('key-active')
+    || caps[1].className.includes('key-active'))
+  ) {
+    textarea.value += key.textContent;
+  } if (
+    key && event.shiftKey
+    && event.code !== 'Backspace'
+    && event.code !== 'Enter'
+    && event.code !== 'ShiftLeft'
+    && event.code !== 'ShiftRight'
+    && event.code !== 'ControlLeft'
+    && event.code !== 'ControlRight'
+    && event.code !== 'AltLeft'
+    && event.code !== 'AltRight'
+    && event.code !== 'CapsLock'
+    && event.code !== 'MetaLeft'
+    && event.code !== 'Tab'
+    && (!caps[0].className.includes('key-active')
+    || !caps[1].className.includes('key-active'))
   ) {
     textarea.value += key.textContent.toUpperCase();
   } if (event.code === 'Tab') {
