@@ -4,7 +4,7 @@ const initLang = localStorage.getItem('lang');
 body.innerHTML = `
     <div class="container">
       <h1>RSS Virtual Keyboard</h1>
-      <textarea class="textarea" id="textarea" cols="30" rows="10" readonly></textarea>
+      <textarea class="textarea" id="textarea" cols="30" rows="10"></textarea>
       <div class="keyboard">
         <div class="row">
           <div class="key en Backquote">\`</div>
@@ -157,7 +157,8 @@ if (!initLang || initLang === 'en') {
   document.querySelectorAll('.ru').forEach((el) => {
     el.classList.add('hide');
   });
-} if (initLang === 'ru') {
+}
+if (initLang === 'ru') {
   document.querySelectorAll('.en').forEach((el) => {
     el.classList.add('hide');
   });
@@ -202,6 +203,7 @@ document.addEventListener('keydown', (event) => {
 
 const keyboard = document.querySelector('.keyboard');
 const textarea = document.getElementById('textarea');
+const caps = document.getElementsByClassName('CapsLock');
 
 keyboard.addEventListener('click', (event) => {
   if (
@@ -220,10 +222,25 @@ keyboard.addEventListener('click', (event) => {
     && !event.target.className.includes('Tab')
   ) {
     textarea.value += event.target.textContent;
+  } if (event.target.className.includes('Tab')) {
+    textarea.value += '    ';
+  } if (event.target.className.includes('Enter')) {
+    textarea.value += '\n';
+  } if (event.target.className.includes('Backspace')) {
+    textarea.value = textarea.value.slice(0, textarea.value.length - 1);
+  } if (event.target.className.includes('CapsLock') && !event.target.className.includes('key-active')) {
+    [...caps].forEach((el) => el.classList.add('key-active'));
+  } else if (event.target.className.includes('CapsLock') && event.target.className.includes('key-active')) {
+    [...caps].forEach((el) => el.classList.remove('key-active'));
   }
 });
 
+textarea.addEventListener('keypress', (event) => {
+  event.preventDefault();
+});
+
 document.addEventListener('keydown', (event) => {
+  event.preventDefault();
   const lang = localStorage.getItem('lang');
   const key = document.getElementsByClassName(`${lang} ${event.code}`)[0];
 
@@ -246,6 +263,24 @@ document.addEventListener('keydown', (event) => {
     && event.code !== 'Tab'
   ) {
     textarea.value += key.textContent;
+  } if (event.code === 'Tab') {
+    textarea.value += '    ';
+  } if (event.code === 'Enter') {
+    textarea.value += '\n';
+  } if (event.code === 'Backspace') {
+    textarea.value = textarea.value.slice(0, textarea.value.length - 1);
+  } if (
+    event.code === 'CapsLock'
+    && (!caps[0].className.includes('key-active')
+    || !caps[1].className.includes('key-active'))
+  ) {
+    [...caps].forEach((el) => el.classList.add('key-active'));
+  } else if (
+    event.code === 'CapsLock'
+    && (caps[0].className.includes('key-active')
+    && caps[1].className.includes('key-active'))
+  ) {
+    [...caps].forEach((el) => el.classList.remove('key-active'));
   }
 });
 
@@ -253,7 +288,7 @@ document.addEventListener('keyup', (event) => {
   const lang = localStorage.getItem('lang');
   const key = document.getElementsByClassName(`${lang} ${event.code}`)[0];
 
-  if (key) {
+  if (key && !key.className.includes('CapsLock')) {
     key.classList.remove('key-active');
   }
 });
