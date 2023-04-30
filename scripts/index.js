@@ -220,8 +220,28 @@ keyboard.addEventListener('click', (event) => {
     && !event.target.className.includes('CapsLock')
     && !event.target.className.includes('MetaLeft')
     && !event.target.className.includes('Tab')
+    && (!caps[0].className.includes('key-active')
+    || !caps[1].className.includes('key-active'))
   ) {
     textarea.value += event.target.textContent;
+  } if (
+    event.target.tagName === 'DIV'
+    && event.target.className.includes('key ')
+    && !event.target.className.includes('Backspace')
+    && !event.target.className.includes('Enter')
+    && !event.target.className.includes('ShiftLeft')
+    && !event.target.className.includes('ShiftRight')
+    && !event.target.className.includes('ControlLeft')
+    && !event.target.className.includes('ControlRight')
+    && !event.target.className.includes('AltLeft')
+    && !event.target.className.includes('AltRight')
+    && !event.target.className.includes('CapsLock')
+    && !event.target.className.includes('MetaLeft')
+    && !event.target.className.includes('Tab')
+    && (caps[0].className.includes('key-active')
+    || caps[1].className.includes('key-active'))
+  ) {
+    textarea.value += event.target.textContent.toUpperCase();
   } if (event.target.className.includes('Tab')) {
     textarea.value += '    ';
   } if (event.target.className.includes('Enter')) {
@@ -261,8 +281,27 @@ document.addEventListener('keydown', (event) => {
     && event.code !== 'CapsLock'
     && event.code !== 'MetaLeft'
     && event.code !== 'Tab'
+    && (!caps[0].className.includes('key-active')
+    || !caps[1].className.includes('key-active'))
   ) {
     textarea.value += key.textContent;
+  } if (
+    key
+    && event.code !== 'Backspace'
+    && event.code !== 'Enter'
+    && event.code !== 'ShiftLeft'
+    && event.code !== 'ShiftRight'
+    && event.code !== 'ControlLeft'
+    && event.code !== 'ControlRight'
+    && event.code !== 'AltLeft'
+    && event.code !== 'AltRight'
+    && event.code !== 'CapsLock'
+    && event.code !== 'MetaLeft'
+    && event.code !== 'Tab'
+    && (caps[0].className.includes('key-active')
+    || caps[1].className.includes('key-active'))
+  ) {
+    textarea.value += key.textContent.toUpperCase();
   } if (event.code === 'Tab') {
     textarea.value += '    ';
   } if (event.code === 'Enter') {
@@ -278,7 +317,7 @@ document.addEventListener('keydown', (event) => {
   } else if (
     event.code === 'CapsLock'
     && (caps[0].className.includes('key-active')
-    && caps[1].className.includes('key-active'))
+    || caps[1].className.includes('key-active'))
   ) {
     [...caps].forEach((el) => el.classList.remove('key-active'));
   }
