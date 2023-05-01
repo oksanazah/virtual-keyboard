@@ -1,0 +1,87 @@
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.textarea {
+  width: 680px;
+  height: 160px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.keyboard {
+  width: 700px;
+  height: 224px;
+  background: #747474;
+  border-radius: 4px;
+  border: 2px solid #424242;
+  margin: 0 auto;
+  padding: 6px;
+}
+
+.row {
+  margin-bottom: 6px;
+}
+
+.key {
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background: #424242;
+  border-radius: 4px;
+  margin-left: 1px;
+  transition: border-radius 0.3s, background-color 0.3s;
+}
+
+.key:hover {
+  background: #5f70b9;
+}
+
+.Backspace,
+.Tab,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight,
+.ArrowUp,
+.ControlLeft,
+.ControlRight,
+.MetaLeft,
+.AltLeft,
+.AltRight,
+.ArrowLeft,
+.ArrowDown,
+.ArrowRight {
+  background: #242424;
+  font-weight: 600;
+}
+
+.key:active,
+.key-active {
+  background: #496bff;
+  border-radius: 40px;
+}
+
+.Backspace,
+.CapsLock,
+.ShiftLeft,
+.Tab {
+  width: 100px;
+}
+
+.Enter,
+.ShiftRight {
+  width: 86px;
+}
+
+.Space {
+  width: 330px;
+}
+
+.hide {
+  display: none;
+}
